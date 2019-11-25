@@ -28,7 +28,7 @@ public class TestPyramidService {
         String word = "banana";
 
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/isPyramid?word=" + word),
+                createURLWithPort(word),
                 HttpMethod.GET, entity, String.class);
 
         assert(Boolean.parseBoolean(response.getBody()));
@@ -41,12 +41,12 @@ public class TestPyramidService {
         String word = "notPyramid";
 
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/isPyramid?word=" + word),
+                createURLWithPort(word),
                 HttpMethod.GET, entity, String.class);
 
         assert(!Boolean.parseBoolean(response.getBody()));
     }
     private String createURLWithPort(String uri) {
-        return "http://localhost:" + port + uri;
+        return "http://localhost:" + port + "/isPyramid?word=" + uri;
     }
 }
