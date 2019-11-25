@@ -25,13 +25,12 @@ public class PyramidController {
             letterCounter.put(letter, letterCounter.getOrDefault(letter, 0) + 1);
         }
 
-        int counter = 1;
-        for (int i = 1; i <= letterCounter.size(); i++) {
+        int counter;
+        for (counter = 1; counter <= letterCounter.size(); counter++) {
             if (!letterCounter.containsValue(counter)) {
                 break;
-            } else {
-                counter++;
             }
+
         }
 
         return counter - 1 == letterCounter.size();
